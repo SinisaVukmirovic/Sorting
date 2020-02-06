@@ -1,24 +1,18 @@
-const containerElem = document.querySelector('.container');
+const bodyElem = document.querySelector('.list-body');
 
 function fetchHeroes() {
     dotaHeroes().then(results => {
         console.log(results);
 
         results.forEach(hero => {
-            containerElem.innerHTML += `
-                <div class="hero">
-                    <div class="hero-name">
-                        <h3>${hero.localized_name}</h3>
-                    </div>
-                    <div class="hero-img">
-                        <img class="hero-img" src="https://api.opendota.com${hero.img}" alt="Hero Avatar" />
-                    </div>
-                    <div class="stats">
-                        <h4>STR: <span>${hero.base_str}</span></h4>
-                        <h4>AGI: <span>${hero.base_agi}</span></h4>
-                        <h4>INT: <span>${hero.base_int}</span></h4>
-                    </div>
-                </div>
+
+            bodyElem.innerHTML += `
+                <tr>
+                    <td><img class="hero-img" src="https://api.opendota.com${hero.icon}" alt="Hero Avatar" />${hero.localized_name}</td>
+                    <td>${hero.base_str}</td>
+                    <td>${hero.base_agi}</td>
+                    <td>${hero.base_int}</td>
+                </tr>
             `;
         });
         

@@ -7,43 +7,65 @@
 body {
     background-color: #333;
     color: #eee;
+    font-family: sans-serif;
+    line-height: 2;
+    position: relative;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    width: 30rem;
     max-width: 90%;
     margin: 5rem auto;
+    height: 70vh;
+    overflow-y: scroll;
+    position: relative;
 }
 
-.hero {
-    display: grid;
-    grid-template-areas: 
-        "HN HN"
-        "IM ST"
-    ;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin: .5rem 0;
-    padding: .5rem;
+table {
+    position: relative;
+    margin-right: .25rem;
+}
+
+thead {
+    position: sticky;
+    /* top: 8rem;
+    width: 25rem; */
+    margin-top: -3.5rem;
+    background-color: crimson;
+}
+    thead th {
+        padding: .5rem 1rem;
+    }
+
+tr:nth-child(even) {
     background-color: #222;
 }
 
-.hero-name {
-    grid-area: HN;
+td {
+    padding: .25rem 1rem;
     text-align: center;
 }
-.hero-img {
-    grid-area: IM;
-}
-    .hero-img img {width: 100%;}
-.stats {
-    width: 50%;
-    grid-area: ST;
+
+td:nth-child(1) {
     display: flex;
-    flex-direction: column;
 }
-    .stats h4:nth-child(1) {color: coral;}
-    .stats h4:nth-child(2) {color: lime;}
-    .stats h4:nth-child(3) {color: cornflowerblue;}
+td:nth-child(1) img {
+    margin-right: 1rem;
+}
+
+/* Scroll bars styling */
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+    background: #222;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: crimson;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #777; 
+}
