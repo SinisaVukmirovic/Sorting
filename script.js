@@ -1,4 +1,4 @@
-const bodyElem = document.querySelector('.list-body');
+const tableBodyElem = document.querySelector('.list-body');
 
 function fetchHeroes() {
     dotaHeroes().then(results => {
@@ -6,24 +6,27 @@ function fetchHeroes() {
 
         results.forEach(hero => {
 
-            bodyElem.innerHTML += `
+            tableBodyElem.innerHTML += `
                 <tr>
-                    <td><img class="hero-img" src="https://api.opendota.com${hero.icon}" alt="Hero Avatar" />${hero.localized_name}</td>
+                    <td><img class="hero-img" src="https://api.opendota.com${hero.icon}" alt="Hero Icon" />${hero.localized_name}</td>
                     <td>${hero.base_str}</td>
                     <td>${hero.base_agi}</td>
                     <td>${hero.base_int}</td>
                 </tr>
             `;
         });
-        
-        // ============ TO DO ===============
-        const strs = Array.from(containerElem.querySelectorAll('h4:nth-child(1) span'));
-        const agis = Array.from(containerElem.querySelectorAll('h4:nth-child(2) span'));
-        const ints = Array.from(containerElem.querySelectorAll('h4:nth-child(3) span'));
-        
-        strs.forEach(str => {
-            console.log(str.innerHTML);
-        });
+
+        sortStats();
+
+
+        const stats = Array.from(tableBodyElem.querySelectorAll('tr td:not(:first-child)'));
+
+        // ============ TO DO ======================
+        const sortedStats = stats.sort((a, b) => {});
+
+        // stats.forEach(stat => {
+        //     console.log(stat.innerHTML);
+        // });
 
     })
     .catch(err => {
@@ -42,6 +45,7 @@ async function dotaHeroes() {
 
 fetchHeroes();
 
-function finished() {
-    console.log('all done')
+// ======== TO DO ==========
+function sortStats() {
+    
 }
